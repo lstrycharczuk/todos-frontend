@@ -10,7 +10,7 @@ function App() {
     fetch(`${BASE_API_URL}/todos`)
       .then(resp => resp.json())
       .then(data => {
-        setTodos(data)
+        setTodos(data.tasks)
       }).catch(err => {
         console.error(err)
         if (retries < 3) {
@@ -24,7 +24,7 @@ function App() {
       <h1>Todo List</h1>
       <ul>
         {todos.map(todo => (
-          <li key={todo._id}>{todo.title}</li>
+          <li key={todo._id}>{todo.task}</li>
         ))}
       </ul>
     </div>
